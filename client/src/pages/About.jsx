@@ -2,14 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../store/Auth";
 
-
 const About = () => {
-  
-
-  const {userData} = useAuth()
+  const { userData } = useAuth();
   return (
     <div className="w-full flex flex-col items-center mt-12">
-
       <div className="flex items-center w-[90%] max-w-[1420px] justify-evenly">
         <div className="flex flex-col gap-2">
           <h3 className="text-bgColor text-lg">Welcome, {userData.username}</h3>
@@ -41,10 +37,16 @@ const About = () => {
           </div>
 
           <div className="mt-10 flex gap-6">
-            <NavLink to="/contact" className="bg-btnColor px-4 py-[6px] rounded-lg hover:opacity-85">
+            <NavLink
+              to="/contact"
+              className="bg-btnColor px-4 py-[6px] rounded-lg hover:opacity-85"
+            >
               Connect Now
             </NavLink>
-            <NavLink to="/about" className="bg-transparent border-[1px] border-btnColor px-6 py-[6px] rounded-lg hover:opacity-85">
+            <NavLink
+              to="/about"
+              className="bg-transparent border-[1px] border-btnColor px-6 py-[6px] rounded-lg hover:opacity-85"
+            >
               Learn More
             </NavLink>
           </div>
@@ -57,25 +59,27 @@ const About = () => {
       </div>
 
       <div className="max-w-[1200px] w-[90%] bg-bgColor flex text-black p-6 mt-20 rounded-lg">
-      <div className="flex flex-col justify-center items-center border-r-[2px] border-black w-full">
-        <span className="text-darkColor text-[36px] font-bold">50+</span>
-        <span className="text-lg opacity-[0.8]">Registered companies</span>
+        <div className="flex flex-col justify-center items-center border-r-[2px] border-black w-full">
+          <span className="text-darkColor text-[36px] font-bold">50+</span>
+          <span className="text-lg opacity-[0.8]">Registered companies</span>
+        </div>
+        <div className="flex flex-col justify-center items-center border-r-[2px] border-black w-full">
+          <span className="text-darkColor text-[36px] font-bold">150+</span>
+          <span className="text-lg opacity-[0.8]">Projects Done</span>
+        </div>
+        <div className="flex flex-col justify-center items-center border-r-[2px] border-black w-full">
+          <span className="text-darkColor text-[36px] font-bold">10,000</span>
+          <span className="text-lg opacity-[0.8]">Happy Clients</span>
+        </div>
+        <div className="flex flex-col justify-center items-center w-full">
+          <span className="text-darkColor text-[36px] font-bold">650k+</span>
+          <span className="text-lg opacity-[0.8]">Youtube Subscribers</span>
+        </div>
       </div>
-      <div className="flex flex-col justify-center items-center border-r-[2px] border-black w-full">
-        <span className="text-darkColor text-[36px] font-bold">150+</span>
-        <span className="text-lg opacity-[0.8]">Projects Done</span>
-      </div>
-      <div className="flex flex-col justify-center items-center border-r-[2px] border-black w-full">
-        <span className="text-darkColor text-[36px] font-bold">10,000</span>
-        <span className="text-lg opacity-[0.8]">Happy Clients</span>
-      </div>
-      <div className="flex flex-col justify-center items-center w-full">
-        <span className="text-darkColor text-[36px] font-bold">650k+</span>
-        <span className="text-lg opacity-[0.8]">Youtube Subscribers</span>
-      </div>
-    </div>
 
-    <div className='flex bg-btnColor w-full p-10 justify-center items-center text-white mt-16'>@moiz.dev 2024 </div>
+      <div className="flex bg-btnColor w-full p-10 justify-center items-center text-white mt-16">
+        @moiz.dev 2024{" "}
+      </div>
     </div>
   );
 };
