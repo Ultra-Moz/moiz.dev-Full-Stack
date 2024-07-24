@@ -39,9 +39,8 @@ const Login = () => {
         navigate("/");
         const res_data = await response.json();
         // storeTokenLS(res_data.token);
-        console.log(res_data);
 
-        LoginUser(res_data.token, res_data);
+        LoginUser(res_data.token);
       }
     } catch (error) {
       console.log("login", error);

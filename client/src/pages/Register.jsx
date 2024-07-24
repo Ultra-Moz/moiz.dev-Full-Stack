@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/Auth";
 
 const Register = () => {
@@ -20,8 +20,8 @@ const Register = () => {
     });
   };
 
-  const navigate = useNavigate()
-  const {storeTokenLS} = useAuth()
+  const navigate = useNavigate();
+  const { storeTokenLS, registerUser } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,10 +40,12 @@ const Register = () => {
           password: "",
           phone: "",
         });
-        const res_data = await response.json()
+        const res_data = await response.json();
+        registerUser(res_data.token);
 
-        storeTokenLS(res_data.token)
-        navigate("/")
+        // storeTokenLS(res_data.token)
+
+        navigate("/");
       }
     } catch (error) {
       console.log("register", error);

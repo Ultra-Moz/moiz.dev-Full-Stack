@@ -13,23 +13,29 @@ export const AuthProvider = ({ children }) => {
     return localStorage.setItem("token", userToken);
   };
 
+  const registerUser = (userToken) => {
+    setToken(userToken);
+    userAuthentication(userToken);
+    return localStorage.setItem("token", userToken);
+  };
+
   const LogoutUser = () => {
     setToken("");
     localStorage.removeItem("token");
     setUserData("");
   };
 
-  const LoginUser = (userToken, formData) => {
+  const LoginUser = (userToken) => {
     setToken(userToken);
-    setUserData(formData);
-    localStorage.setItem("token", userToken);
+    userAuthentication(userToken);
+    return localStorage.setItem("token", userToken);
   };
 
   useEffect(() => {
-    userAuthentication();
+    userAuthentication(token);
   }, []);
 
-  const userAuthentication = async () => {
+  const userAuthentication = async (token) => {
     try {
       const response = await fetch("http://localhost:5000/api/auth/user", {
         method: "GET",
@@ -52,7 +58,14 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ storeTokenLS, LogoutUser, isLoggedIn, userData, LoginUser }}
+      value={{
+        storeTokenLS,
+        LogoutUser,
+        isLoggedIn,
+        userData,
+        LoginUser,
+        registerUser,
+      }}
     >
       {children}
     </AuthContext.Provider>
