@@ -21,7 +21,7 @@ const Register = () => {
   };
 
   const navigate = useNavigate();
-  const { storeTokenLS, registerUser } = useAuth();
+  const { registerUser } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();

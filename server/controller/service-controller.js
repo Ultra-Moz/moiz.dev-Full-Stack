@@ -6,7 +6,7 @@ const serviceController = async (req, res) => {
     if (!response) {
       return res.status(404).send("No services found");
     }
-    res.status(200).send({ msg: response });
+    res.status(200).send(response);
   } catch (error) {
     console.log(`services ${error}`);
   }
