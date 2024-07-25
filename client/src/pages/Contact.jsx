@@ -7,19 +7,18 @@ const Contact = () => {
     email: "",
     message: "",
   });
-  const [user, setUser] = useState(true)
-  const {userData} = useAuth()
+  const [user, setUser] = useState(true);
+  const { userData } = useAuth();
 
-  if(user && userData){
+  if (user && userData) {
     setContact({
-      username:userData.username,
-      email:userData.email,
-      message:""
-    })
+      username: userData.username,
+      email: userData.email,
+      message: "",
+    });
 
-    setUser(false)
+    setUser(false);
   }
-  
 
   const handleInput = (e) => {
     const name = e.target.name;
@@ -31,12 +30,31 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(contact);
+    try {
+      const response = await fetch("http://localhost:5000/api/form/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contact),
+      });
+
+      if (response.ok) {
+        setContact({
+          username: userData.username,
+          email: userData.email,
+          message: "",
+        });
+      }
+
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  
   return (
     <div className="flex flex-col items-center mt-12 ">
       <div className="flex text-white w-[90%] max-w-[1420px] justify-evenly">
@@ -102,9 +120,17 @@ const Contact = () => {
         </div>
       </div>
       <section className="mt-28">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5425.21844452156!2d67.03221144036834!3d24.83314960920313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33d09db6ecf41%3A0x8f853186a1621f7e!2sTeen%20Talwar%20Monument!5e0!3m2!1sen!2s!4v1719880217903!5m2!1sen!2s"  className="border-0 w-screen h-[400px]" allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5425.21844452156!2d67.03221144036834!3d24.83314960920313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33d09db6ecf41%3A0x8f853186a1621f7e!2sTeen%20Talwar%20Monument!5e0!3m2!1sen!2s!4v1719880217903!5m2!1sen!2s"
+          className="border-0 w-screen h-[400px]"
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
       </section>
-      <div className='flex bg-btnColor w-full p-10 justify-center items-center text-white '>@moiz.dev 2024 </div>
+      <div className="flex bg-btnColor w-full p-10 justify-center items-center text-white ">
+        @moiz.dev 2024{" "}
+      </div>
     </div>
   );
 };
