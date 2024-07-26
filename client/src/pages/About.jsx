@@ -8,7 +8,7 @@ const About = () => {
     <div className="w-full flex flex-col items-center mt-12">
       <div className="flex items-center w-[90%] max-w-[1420px] justify-evenly">
         <div className="flex flex-col gap-2">
-          <h3 className="text-bgColor text-lg">Welcome, {userData.username}</h3>
+          <h3 className="text-bgColor text-lg">Welcome {userData.username ?? "to our company."}</h3>
           <h1 className="text-white text-[56px] font-bold">Why Choose Us?</h1>
           <div className="flex flex-col gap-10">
             <p className="text-bgColor max-w-[550px] mt-2">
