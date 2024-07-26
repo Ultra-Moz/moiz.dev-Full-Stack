@@ -29,24 +29,30 @@ const Services = () => {
         <h1 className="text-white font-bold text-[52px] w-[200px] relative underline-title">
           Services
         </h1>
-        <div className="flex flex-start">
-          <div className="p-10 border-white border-solid border-2 flex flex-col justify-center items-center">
-            <img
-              src="/design.png"
-              alt="People Designing"
-              className="w-[350px]"
-            />
-            <div className="flex justify-around w-full mt-5">
-              <span className="text-lg">Tech Solutions Inc.</span>
-              <span className="text-lg">$1500 - $7000</span>
-            </div>
-            <div className="flex flex-col gap-3 mt-5">
-              <h3 className="text-2xl font-bold">Web Development</h3>
-              <p className="max-w-[300px] tracking-wide">
-                Crafting tailor-made websites and web applications
-              </p>
-            </div>
-          </div>
+        <div className="grid grid-cols-4 gap-5 mt-10">
+          {services.map((service) => {
+            return (
+              <div className="p-10 border-white border-solid border-2 flex flex-col items-center rounded-md">
+                <img
+                  src="/design.png"
+                  alt="People Designing"
+                  className="w-[350px]"
+                />
+                <div className="flex justify-around w-full mt-5">
+                  <span className="text-lg">{service.provider}</span>
+                  <span className="text-lg">{service.price}</span>
+                </div>
+                <div className="flex flex-col gap-3 mt-5">
+                  <h3 className="text-2xl font-bold leading-[1.3]">
+                    {service.service}
+                  </h3>
+                  <p className="max-w-[300px] tracking-wide">
+                    {service.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
