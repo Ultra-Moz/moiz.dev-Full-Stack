@@ -50,7 +50,6 @@ const Home = () => (
       <img src="home.png" alt="Hero Image" className="w-[500px] aspect-square" />
     </div>
 
-    <div className='flex bg-btnColor w-full p-10 justify-center items-center text-white mt-16'>@moiz.dev 2024 </div>
   </div>
 );
 

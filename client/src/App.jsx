@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import Navbar from './components/Navbar'
 import PageNotFound from './pages/PageNotFound'
 import Logout from './pages/Logout'
+import Footer from './components/Footer'
 
 
 const AppContent = () => {
@@ -43,6 +44,7 @@ const AppContent = () => {
         <Route path="/logout" element={<Logout />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      <Footer/>
     </>
   );
 };

@@ -128,9 +128,6 @@ const Contact = () => {
           referrerPolicy="no-referrer-when-downgrade"
         ></iframe>
       </section>
-      <div className="flex bg-btnColor w-full p-10 justify-center items-center text-white ">
-        @moiz.dev 2024{" "}
-      </div>
     </div>
   );
 };

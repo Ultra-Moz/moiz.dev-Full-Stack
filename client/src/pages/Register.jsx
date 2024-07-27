@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/Auth";
+import Footer from "../components/Footer";
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -33,6 +34,7 @@ const Register = () => {
         },
         body: JSON.stringify(user),
       });
+      const res_data = await response.json();
       if (response.ok) {
         setUser({
           username: "",
@@ -40,19 +42,20 @@ const Register = () => {
           password: "",
           phone: "",
         });
-        const res_data = await response.json();
         registerUser(res_data.token);
 
         // storeTokenLS(res_data.token)
 
         navigate("/");
+      }else{
+        console.log(res_data.extraDetails)
       }
     } catch (error) {
       console.log("register", error);
     }
   };
   return (
-    <div className="flex flex-col items-center mt-12">
+    <div className="flex flex-col items-center my-12">
       <div className="flex text-white w-[90%] max-w-[1420px] justify-evenly">
         <img
           src="/register.png"
@@ -124,9 +127,6 @@ const Register = () => {
             </button>
           </form>
         </div>
-      </div>
-      <div className="flex bg-btnColor w-full p-10 justify-center items-center text-white mt-16 absolute bottom-0">
-        @moiz.dev 2024{" "}
       </div>
     </div>
   );

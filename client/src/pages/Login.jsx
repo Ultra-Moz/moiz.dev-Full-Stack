@@ -47,7 +47,7 @@ const Login = () => {
     }
   };
   return (
-    <div className="flex flex-col items-center mt-12 ">
+    <div className="flex flex-col items-center my-12 ">
       <div className="flex text-white w-[90%] max-w-[1420px] justify-evenly">
         <img
           src="/login.png"
@@ -98,9 +98,7 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <div className="flex bg-btnColor w-full p-10 justify-center items-center text-white mt-16 absolute bottom-0">
-        @moiz.dev 2024{" "}
-      </div>
+      
     </div>
   );
 };

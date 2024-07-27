@@ -5,8 +5,8 @@ import { useAuth } from "../store/Auth";
 const About = () => {
   const { userData } = useAuth();
   return (
-    <div className="w-full flex flex-col items-center mt-12">
-      <div className="flex items-center w-[90%] max-w-[1420px] justify-evenly">
+    <div className="w-full flex flex-col items-center my-12">
+      <div className="flex items-center w-[90%] max-w-[1420px] justify-evenly ">
         <div className="flex flex-col gap-2">
           <h3 className="text-bgColor text-lg">Welcome {userData.username ?? "to our company."}</h3>
           <h1 className="text-white text-[56px] font-bold">Why Choose Us?</h1>
@@ -77,9 +77,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="flex bg-btnColor w-full p-10 justify-center items-center text-white mt-16">
-        @moiz.dev 2024{" "}
-      </div>
+
     </div>
   );
 };

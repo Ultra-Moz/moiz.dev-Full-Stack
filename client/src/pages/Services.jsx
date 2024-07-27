@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Footer from "../components/Footer";
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -24,12 +25,12 @@ const Services = () => {
   };
   // Map the services
   return (
-    <div className="flex justify-center mt-12">
-      <div className="flex text-white w-[90%] max-w-[1420px] flex-col">
+    <div className="flex items-center flex-col mt-12">
+      <div className="flex text-white w-[80%] max-w-[1420px] flex-col">
         <h1 className="text-white font-bold text-[52px] w-[200px] relative underline-title">
           Services
         </h1>
-        <div className="grid grid-cols-4 gap-5 mt-10">
+        <div className="grid grid-cols-3 gap-6 my-10">
           {services.map((service) => {
             return (
               <div className="p-10 border-white border-solid border-2 flex flex-col items-center rounded-md">
@@ -38,7 +39,7 @@ const Services = () => {
                   alt="People Designing"
                   className="w-[350px]"
                 />
-                <div className="flex justify-around w-full mt-5">
+                <div className="flex justify-between w-full mt-5">
                   <span className="text-lg">{service.provider}</span>
                   <span className="text-lg">{service.price}</span>
                 </div>
