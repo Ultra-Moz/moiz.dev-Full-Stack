@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/Auth";
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,16 +34,19 @@ const Login = () => {
         },
         body: JSON.stringify(formData),
       });
+      const res_data = await response.json();
       if (response.ok) {
         setFormData({
           email: "",
           password: "",
         });
+      toast.success("Login Successful!")
         navigate("/");
-        const res_data = await response.json();
-        // storeTokenLS(res_data.token);
+        
 
         LoginUser(res_data.token);
+      }else{
+        toast.error(res_data.extraDetails ?? res_data.message)
       }
     } catch (error) {
       console.log("login", error);

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/Auth";
 import Footer from "../components/Footer";
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -42,13 +44,14 @@ const Register = () => {
           password: "",
           phone: "",
         });
+      toast.success("Registeration Successful!")
         registerUser(res_data.token);
 
         // storeTokenLS(res_data.token)
 
         navigate("/");
       }else{
-        console.log(res_data.extraDetails)
+        toast.error(res_data.extraDetails ?? res_data.message)
       }
     } catch (error) {
       console.log("register", error);

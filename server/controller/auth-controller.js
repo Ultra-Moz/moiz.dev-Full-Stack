@@ -17,7 +17,7 @@ const register = async (req, res) => {
     const userExists = await User.findOne({ email });
 
     if (userExists) {
-      return res.status(400).send("User already exists");
+      return res.status(400).send({message:"User already exists"});
     }
     const userCreated = await User.create({
       username,
@@ -42,19 +42,20 @@ const login = async (req, res, next) => {
     const { email, password } = req.body;
     userExists = await User.findOne({ email });
     if (!userExists) {
-      return res.status(401).send({ msg: "Email not signed up" });
+      return res.status(401).send({ message: "Email not signed up" });
     }
     const isValidPass = await userExists.comparePassword(password);
 
     if (isValidPass) {
       res.status(200).send({
-        msg: "Login succesful",
+        message: "Login succesful",
         token: await userExists.generateToken(),
         userId: userExists._id.toString(),
       });
     } else {
       const error = new Error("Invalid Credentials");
       error.statusError = 401;
+      error.extraDetails = "Invalid Credentials"
       throw error;
     }
   } catch (error) {
