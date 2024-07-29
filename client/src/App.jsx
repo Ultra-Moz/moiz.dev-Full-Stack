@@ -8,8 +8,11 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Navbar from './components/Navbar'
 import PageNotFound from './pages/PageNotFound'
+import AdminUsers from './pages/AdminUsers'
+import AdminContacts from './pages/AdminContacts'
 import Logout from './pages/Logout'
 import Footer from './components/Footer'
+import AdminLayout from './components/Layout/AdminLayout'
 
 
 const AppContent = () => {
@@ -22,11 +25,17 @@ const AppContent = () => {
     '/services',
     '/register',
     '/login',
+    '/admin',
+    '/admin/users',
+    '/admin/contacts',
     '/about/',
     '/contact/',
     '/services/',
     '/register/',
-    '/login/'
+    '/login/',
+    '/admin/',
+    '/admin/users/',
+    '/admin/contacts/',
   ];
 
   const isKnownRoute = routes.includes(location.pathname);
@@ -43,6 +52,10 @@ const AppContent = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="*" element={<PageNotFound />} />
+        <Route path="/admin" element={<AdminLayout/>}>
+          <Route path="users" element={<AdminUsers/>}/>
+          <Route path="contacts" element={<AdminContacts/>}/>
+        </Route>
       </Routes>
       <Footer/>
     </>

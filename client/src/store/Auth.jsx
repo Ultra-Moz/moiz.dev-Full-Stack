@@ -5,6 +5,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [userData, setUserData] = useState("");
+  const authorizationToken = `Bearer ${token}`
 
   const isLoggedIn = !!token;
 
@@ -40,7 +41,7 @@ export const AuthProvider = ({ children }) => {
       const response = await fetch("http://localhost:5000/api/auth/user", {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: authorizationToken,
         },
       });
 
@@ -65,6 +66,7 @@ export const AuthProvider = ({ children }) => {
         userData,
         LoginUser,
         registerUser,
+        authorizationToken
       }}
     >
       {children}

@@ -8,7 +8,7 @@ const Navbar = () => {
   const {isLoggedIn} = useAuth()
   return (
     <nav className='w-full flex justify-center items-center'>
-    <header className='flex justify-between items-center w-[90%] max-w-[1300px] p-8 font-sans'>
+    <header className='flex justify-between items-center w-[90%] max-w-[1300px] py-8 font-sans'>
       <h3 className='text-xl text-btnColor'><NavLink to="/">moiz.dev</NavLink></h3>
     <ul className='flex gap-10 text-lg text-btnColor'>
       <li><NavLink className={({ isActive }) => `navlink ${isActive ? 'active-link' : 'text-btnColor'}`} to="/">Home</NavLink></li>

@@ -4,7 +4,7 @@ const authMiddleware = async (req, res, next) => {
   const token = req.header("Authorization");
 
   if (!token) {
-    return res.status(401).send("Unauthorized HTPP request. there is no token");
+    return res.status(401).send({message:"Unauthorized HTPP request. there is no token"});
   }
   const jwtToken = token.replace("Bearer", "").trim();
   try {
